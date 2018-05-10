@@ -1,0 +1,227 @@
+@import "assets/scss/common";
+.label {
+    margin: 0;
+}
+.no_bg {
+    background: none;
+    margin-right: 8px;
+}
+page-addplayer {
+    .app-outer {
+        background-image: url(../assets/imgs/birdieball.png);
+        background-repeat: no-repeat;
+        background-size: cover;
+        padding-top: 80px;
+        .select_game {
+            margin: 0px 0 0;
+            h2 {
+                background: $bg_mask;
+                color: $white;
+                padding: 10px 0;
+                margin: $no-margin;
+            }
+        }
+        .full_height {
+            height: 100%;
+        }
+        .app_inner {
+            padding-right: 16px;
+            padding-top: 10px;
+            background: $bg_mask; //               margin-top: 15px;
+            height: 100%;
+            display: inherit !important;
+            overflow: scroll;
+            .item-inner {
+                border: none;
+                .form_outer {
+                    width: 100%;
+                    display: inline-block;
+                    margin-top: 10px;
+                    .tick_icon {
+                        width: 30px;
+                        height: 30px;
+                        display: inline-block;
+                        border-radius: 100%;
+                        background: #19e034;
+                        line-height: 36px;
+                        position: absolute;
+                        top: 40px;
+                        right: 15px;
+                        font-size: 28px;
+                        font-weight: bold;
+                        text-align: center;
+                        z-index: 999;
+                        a {
+                            color: #fff;
+                        }
+                    }
+                    .cross_icon {
+                        width: 30px;
+                        height: 30px;
+                        display: inline-block;
+                        border-radius: 100%;
+                        background: #bd1e2d;
+                        line-height: 36px;
+                        position: absolute;
+                        top: 40px;
+                        right: 24px;
+                        font-size: 28px;
+                        font-weight: bold;
+                        text-align: center;
+                        z-index: 999;
+                        a {
+                            color: #fff;
+                        }
+                    }
+                    .game_name {
+                        label {
+                            font-size: 1.8rem;
+                            color: #fff;
+                        }
+                    }
+                    .player_filds {
+                        border-radius: 10px;
+                        height: 50px;
+                        .text-input {
+                            color: #000;
+                            font-size: 18px;
+                            width: calc(100% - 62px);
+                        }
+                    }
+                }
+                .select_tick {
+                    margin: 0px 0 20px;
+                    text-align: center;
+                    display: inline-block;
+                    width: 100%;
+                    .blue_btn {
+                        background: #3cb878;
+                        width: 100%;
+                        margin: auto;
+                        font-size: 22px;
+                        border-radius: 50px;
+                        height: 50px;
+                        margin: 0px 0;
+                        max-width: 375px;
+                        position: relative;
+                        .tick_icon {
+                            display: inline-block;
+                            color: #fff;
+                            position: absolute;
+                            right: 35px;
+                            top: 11px;
+                            .ion-icon {
+                                font-size: 28px;
+                                font-weight: bold;
+                            }
+                        }
+                    }
+                }
+                .add_player_btn {
+                    margin-top: 40px;
+                    text-align: center;
+                    .add_btn {
+                        background: #ff373f;
+                        width: 100%;
+                        margin: auto;
+                        font-size: 22px;
+                        border-radius: 50px;
+                        height: 50px;
+                        margin: 0px 0;
+                        max-width: 375px;
+                        position: relative;
+                    }
+                }
+            }
+        }
+    }
+    .my-select {
+        border-radius: 10px;
+        border-top-right-radius: 0px;
+        border-bottom-right-radius: 0px;
+    }
+    .my-select-sec {
+        border-radius: 10px;
+        border-top-left-radius: 0px;
+        border-bottom-left-radius: 0px;
+    }
+    .no_pad {
+        padding: 0px 0px;
+    }
+    .cross_icon_new a .cross_ion {
+        width: 30px;
+        height: 30px;
+        display: inline-block;
+        border-radius: 100%;
+        background: #bd1e2d;
+        line-height: 32px;
+        position: absolute;
+        top: 7px;
+        right: 15px;
+        font-size: 28px;
+        font-weight: bold;
+        text-align: center;
+        z-index: 999;
+        color: #fff;
+    }
+    .player_entery {
+        position: relative;
+    }
+    .player_add {
+        margin-top: 10px;
+        position: relative;
+    }
+    .toolbar-background-md {
+        border-color: none;
+        background: none;
+    }
+    .toolbar-background-md {
+        border-color: none;
+        background: none;
+    }
+    .header-md::after,
+    .tabs-md[tabsPlacement="top"] > .tabbar::after,
+    .footer-md::before,
+    .tabs-md[tabsPlacement="bottom"] > .tabbar::before {
+        background: none;
+    }
+    .toolbar-title {
+        text-align: center;
+        color: #fff;
+    }
+    span.input_cross_icon_new {
+        width: 30px;
+        height: 30px;
+        display: inline-block;
+        border-radius: 100%;
+        line-height: 36px;
+        position: absolute;
+        top: 40px;
+        right: 15px;
+        font-size: 28px;
+        font-weight: bold;
+        text-align: center;
+        z-index: 999;
+        background: #bd1e2d;
+    }
+    .input_cross_icon_new .cross_ion {
+        color: #fff;
+    }
+}
+.toolbar-background-ios {
+    background: none;
+}
+@media (max-width:1024px) and (min-width:768px) {
+    .login-outter {
+        position: absolute;
+        width: 96%;
+        float: $float;
+        top: 50%;
+        left: 50%;
+        -ms-transform: translateX(-50%) translateY(-50%);
+        -webkit-transform: translateX(-50%) translateY(-50%);
+        -moz-transform: translateX(-50%)translateY(-50%);
+        -o-transform: translateX(-50%) translateY(-50%);
+        transform: translateX(-50%) translateY(-50%);
+    }
+}

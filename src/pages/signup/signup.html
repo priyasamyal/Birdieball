@@ -1,0 +1,53 @@
+<ion-header>
+     <ion-navbar>
+          <button ion-button menuToggle>
+               <ion-icon name="menu"></ion-icon>
+          </button>
+          <!-- <ion-title class="header_heading">REGIONAL VIDEO GROUPS</ion-title>-->
+     </ion-navbar>
+</ion-header>
+<ion-content class="log app-outer">
+     <div padding class="background-frame">
+          <div class="login-outter">
+               <div class="splash_top_logo">
+                    <img src="assets/imgs/login_logo.png">
+                    <h3>CREATE ACCOUNT</h3>
+                    <p>Get Started Now!</p>
+               </div>
+               <div class="inner-box">
+
+                    <form [formGroup]="signup">
+                         <ion-list>
+                              <ion-item>
+                                   <ion-input type="text" placeholder="Full Name" formControlName="fullname" [(ngModel)]="fullname"></ion-input>
+                              </ion-item>
+                              <ion-item>
+                                   <ion-input type="text" placeholder="User Name" formControlName="username" [(ngModel)]="username"></ion-input>
+                              </ion-item>
+                              <ion-item>
+                                   <ion-input type="email" placeholder="Email" formControlName="email" [(ngModel)]="email"></ion-input>
+                              </ion-item>
+                              <ion-item>
+                                   <ion-input type="password" placeholder="Password" formControlName="password" [(ngModel)]="password"></ion-input>
+                              </ion-item>
+                              <ion-item>
+                                   <ion-input type="password" placeholder="Re-Enter Password" formControlName="confirmPassword" [(ngModel)]="confirmPassword"></ion-input>
+                              </ion-item>
+
+                         </ion-list>
+                    </form>
+
+               </div>
+
+               <div padding class="style_box" style="position: relative">
+
+                    <ion-row>
+                         <ion-col class="select_tick">
+                              <button ion-button color="primary" class="blue_btn" [disabled]="signup.invalid" (click)="signupFunc()">CREATE ACCOUNT<span class="tick_icon"><img class="user_acc" src="assets/imgs/create_account.png"></span></button>
+                         </ion-col>
+                    </ion-row>
+
+               </div>
+          </div>
+     </div>
+</ion-content>

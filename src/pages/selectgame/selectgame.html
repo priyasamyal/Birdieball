@@ -1,0 +1,344 @@
+<!--<ion-header>
+     <ion-label text-center class="label label-md select_game">
+          <h2>SELECT GAME</h2>
+     </ion-label>
+</ion-header>-->
+
+<ion-header>
+     <ion-navbar>
+          <button ion-button menuToggle>
+               <ion-icon name="menu"></ion-icon>
+          </button>
+          <ion-title class="header_heading">SELECT GAME</ion-title>
+     </ion-navbar>
+</ion-header>
+
+<ion-content class="app-outer">
+
+     <div class="full_height">
+          <ion-item class="app_inner">
+
+               <ion-row>
+                    <ion-col>
+                         <button ion-button class="orange_btn" (click)="selectGameFunc('game_1')"><ion-img class="no_bg" width="20" height="35" src="assets/imgs/ladder.png"></ion-img>ROAD GAME</button>
+                    </ion-col>
+                    <ion-col>
+                         <button ion-button class="orange_btn" (click)="selectGameFunc('game_2')"><ion-img class="no_bg" width="30" height="30" src="assets/imgs/game.png"></ion-img>GOLF DARTS</button>
+                    </ion-col>
+               </ion-row>
+
+               <!--<ion-row>
+                    <ion-col>
+                         <button ion-button class="orange_btn" (click)="selectGameFunc('game_3')">GAME 3</button>
+                    </ion-col>
+
+                    <ion-col>
+                         <button ion-button class="orange_btn" (click)="selectGameFunc('game_4')">GAME 4</button>
+                    </ion-col>
+               </ion-row>-->
+
+               <ion-row>
+                    <ion-col text-center class="road_dec">
+                         <h3>DESCRIPTION</h3>
+                         <div class="road_track">
+                              <h5 id="gameName">ROAD GAME</h5>
+                              <p id="gameDescription"><br />1-4 people play this exciting game. <br />Choose 9 or 18 rounds!<br />Each player hits 3 shots.<br />Play for more points.<br />Most points win!</p>
+                         </div>
+                    </ion-col>
+               </ion-row>
+
+               <br />
+               <ion-row>
+                    <ion-col text-center class="rounds_outer">
+                         <h3>ROUNDS</h3>
+                    </ion-col>
+               </ion-row>
+
+               <ion-row>
+                    <ion-col text-center class="add_entery">
+                         <h3>
+                              <span text-center class="remove_entery" (click)="setRoundFunc('9')"><a><img src="assets/imgs/remove.png"></a></span>
+                              <span class="entery_outer" id="rounds">9</span>
+                              <span class="plus_entery" (click)="setRoundFunc('18')"><a><img src="assets/imgs/plus.png"></a></span>
+                         </h3>
+                    </ion-col>
+               </ion-row>
+
+               <ion-row>
+                    <ion-col class="select_tick">
+                         <button ion-button color="primary" class="blue_btn" (click)="gameSelectedFunc()">Next<span class="tick_icon" style="top: 10px;"> <ion-icon name="ios-arrow-forward"></ion-icon></span></button>
+                    </ion-col>
+               </ion-row>
+
+
+               <!--<ion-row>
+               <ion-col class="select_tick">
+                    <button ion-button color="primary" class="blue_btn" (click)="gameSelectedFunc()">SELECT<span class="tick_icon"><ion-icon ios="ios-checkmark" md="md-checkmark"></ion-icon></span></button>
+               </ion-col>
+          </ion-row>-->
+
+          </ion-item>
+     </div>
+
+     <ion-img width="40" height="40" src="assets/imgs/settings.png" style="float: right;background: none;margin-bottom: 10px; margin-right: 6px;position: fixed;bottom: 0;right: 0;" (click)="showModal('settingsModal')"></ion-img>
+
+     <audio id="gameSound" controls loop autoplay style="visibility: hidden;height: 0;position: absolute;">
+          <source src="assets/sound/tune.mp3" type="audio/mpeg">
+     </audio>
+</ion-content>
+
+
+
+<div *ngIf="this.singleton.settingsModal" class="modal animate-top">
+
+     <div class="modal-content">
+          <div class="head">
+               <span class="close" (click)="this.singleton.modalCloseFun()">&times;</span>
+               <p class="text-center"><strong>SETTINGS</strong></p>
+          </div>
+          <hr>
+          <div class="text-pop-inner">
+               <ion-col class="select_tick">
+                    <button ion-button color="primary" class="blue_btn" (click)="onAudioToggle()">SOUND<span class="tick_icon "> <img id="soundImage" _ngcontent-c0="" src=""></span></button>
+               </ion-col>
+
+               <ion-col class="select_tick_blue">
+                    <button ion-button color="primary" class="sky_blue_btn" (click)="showModal('myAccountModal')">MY ACCOUNT<span class="tick_icon "><img _ngcontent-c0="" src="assets/imgs/account.png"></span></button>
+               </ion-col>
+
+               <ion-col class="select_tick_blue">
+                    <button ion-button color="primary" class="sky_blue_btn" (click)="showModal('helpModal')">HELP<span class="tick_icon "><img _ngcontent-c0="" src="assets/imgs/help.png"></span></button>
+               </ion-col>
+
+               <ion-col class="select_tick_blue">
+                    <button ion-button color="primary" class="sky_blue_btn" (click)="showModal('privacyModal')">PRIVACY<span class="tick_icon" style="top: 4px;"><img _ngcontent-c0="" src="assets/imgs/privacy.png"></span></button>
+               </ion-col>
+
+               <ion-col class="select_tick_blue">
+                    <button ion-button color="primary" class="sky_blue_btn" (click)="showModal('contactUsModal')">CONTACT US<span class="tick_icon "> <img _ngcontent-c0="" src="assets/imgs/contact.png"></span></button>
+               </ion-col>
+
+               <ion-col class="select_tick_blue">
+                    <button ion-button color="primary" class="sky_blue_btn" (click)="showModal('logout')">LOGOUT<span class="tick_icon "> <img _ngcontent-c0="" src="assets/imgs/logout.png"></span></button>
+               </ion-col>
+          </div>
+     </div>
+
+</div>
+
+
+
+
+<div *ngIf="this.singleton.contactUsModal" class="modal animate-top">
+
+     <div class="modal-content">
+          <div class="head">
+               <p class="text-center"><strong>CONTACT US</strong></p>
+          </div>
+          <hr>
+          <div class="text-pop-inner contact_text">
+
+               <p>If you need to contact us on any reason, please do not hesitate. Customer satisfaction is our highest priority. We would love the chance to speak with you.</p>
+               <p>We strive to respond within one working day.</p>
+               <p><i>We can answer your messages via Email.birdiebird@abc.com</i></p>
+               <p><i>Our support engineers are standing by to help.</i></p>
+               <p><i>1-888-BIRDIEBIRD x8 (1-888-176-2698 x8)</i></p>
+
+               <ion-col class="select_tick_blue">
+                    <button ion-button color="primary" class="red_btn" (click)="showModal('settingsModal')">BACK<span class="tick_icon"> <ion-icon name="ios-arrow-back"></ion-icon></span></button>
+               </ion-col>
+
+          </div>
+     </div>
+
+</div>
+
+
+
+<div *ngIf="this.singleton.privacyModal" class="modal animate-top">
+
+     <div class="modal-content">
+          <div class="head">
+               <p class="text-center"><strong>PRIVACY</strong></p>
+          </div>
+          <hr>
+          <div class="text-pop-inner contact_text">
+
+               <p>This privacy policy sets out how “Birdie Bird” uses and protects any information that you give “Birdie Bird” when you use this website.
+               </p>
+               <p>“Birdie Bird” is committed to ensuring that your privacy is protected. Should we ask you to provide certain information by which you can be identified when using this website, then you can be assured that it will only be used in accordance with this privacy statement.
+               </p>
+               <p>What we collect</p>
+               <p>We may collect the following information:</p>
+               <p>Name and job title.<br>Contact information including email address.<br>Demographic information such as postcode, preferences and interests.<br>Other information relevant to customer surveys and/or offers.</p>
+
+               <ion-col class="select_tick_blue">
+                    <button ion-button color="primary" class="red_btn" (click)="showModal('settingsModal')">BACK<span class="tick_icon"> <ion-icon name="ios-arrow-back"></ion-icon></span></button>
+               </ion-col>
+
+          </div>
+     </div>
+
+</div>
+
+
+
+<div *ngIf="this.singleton.helpModal" class="modal animate-top">
+
+     <div class="modal-content">
+          <div class="head">
+
+               <p class="text-center"><strong>HELP</strong></p>
+          </div>
+          <hr>
+          <div class="text-pop-inner contact_text">
+               <h3><strong>ROAD GAME Original</strong></h3>
+               <p>The object of the game is to complete what is known as a hole by playing a ball from the teeing ground into the hole on the putting green in the fewest possible number of strokes. A "round of golf' consists of playing 18 such holes.
+               </p>
+               <h3><strong>ROAD GAME AIM</strong></h3>
+               <p>The Definitions section of the Rules of Golf contains over forty Definitions which form the foundation around which the Rules of play are written.
+               </p>
+
+               <h3>
+                    <Strong>ROAD GAME 3</Strong>
+               </h3>
+               <p>1- Don't move, talk or stand close to a player making a stroke. <br> 2- Don't play until the group in front is out of the way. <br> 3- Always play without delay.<br> 4- Invite faster groups to play through.
+               </p>
+
+               <h3><strong>ROAD GAME 4</strong></h3>
+               <p>The object of the game is to complete what is known as a hole by playing a ball from the teeing ground into the hole on the putting green in the fewest possible. Don't play until the group in front is out of the way
+               </p>
+
+               <ion-col class="select_tick_blue">
+
+                    <button ion-button color="primary" class="red_btn" (click)="showModal('settingsModal')">BACK<span class="tick_icon"> <ion-icon name="ios-arrow-back"></ion-icon></span></button>
+
+               </ion-col>
+
+          </div>
+     </div>
+
+</div>
+
+<div *ngIf="this.singleton.myAccountModal" class="modal animate-top">
+     <div class="modal-content">
+          <div class="head account">
+               <span class="close" (click)="showModal('settingsModal')">&times;</span>
+               <p class="text-center"><strong>MY ACCOUNT</strong></p>
+          </div>
+          <hr>
+          <div class="text-pop-inner">
+
+               <ion-item _ngcontent-c0="" class="item item-block item-md top-2">
+                    <ion-avatar _ngcontent-c0="" item-start="" (click)="openImagePicker()">
+                         <img _ngcontent-c0="" src="assets/imgs/user.png" id="userProfilePicture">
+                    </ion-avatar>
+                    <div class="item-inner">
+                         <div class="input-wrapper">
+                              <h2 style="color:#fff;font-size: 22px;margin-bottom: 5px;" id="fullname">JOHN MILLER</h2>
+                         </div>
+                    </div>
+                    <!--                    <p style="color:#fff;" class="address">New York, USA</p>-->
+
+                    <div class="button-effect"></div>
+               </ion-item>
+               <div class="info">
+                    <div class="button_back">
+                         <img src="assets/imgs/button_back-.png">
+                    </div>
+                    <ion-row>
+                         <ion-col col-6>
+                              <p class="left_Col">User Name:</p>
+                              <p class="left_Col">Level:</p>
+                              <p class="left_Col">Signature:</p>
+                         </ion-col>
+                         <ion-col col-6>
+                              <p class="right_col" id="username">Johnmiller2341</p>
+                              <p class="right_col" id="level">36</p>
+                              <p class="right_col" id="signature">Champion</p>
+                         </ion-col>
+                    </ion-row>
+               </div>
+
+
+               <div class="info">
+                    <div class="button_back">
+                         <img src="assets/imgs/back-2.png">
+                    </div>
+                    <ion-row>
+                         <ion-col col-6>
+                              <p class="left_Col">Highest Score:</p>
+                              <p class="left_Col">Games Won:</p>
+                              <p class="left_Col">Win Rate:</p>
+                         </ion-col>
+                         <ion-col col-6>
+                              <p class="right_col" id="highestScore">21,587</p>
+                              <p class="right_col" id="gamesWon">129/188</p>
+                              <p class="right_col" id="winRate">76%</p>
+                         </ion-col>
+                    </ion-row>
+               </div>
+
+               <ion-col class="select_tick_blue top">
+
+                    <button ion-button color="primary" class="sky_blue_btn" (click)="showModal('leaderBoardModal')">LEADER BOARD<span class="tick_icon "><img _ngcontent-c0="" src="assets/imgs/board.png"> </span></button>
+
+               </ion-col>
+
+          </div>
+     </div>
+
+</div>
+
+<div *ngIf="this.singleton.leaderBoardModal" class="modal animate-top leader">
+     <div class="modal-content">
+          <div class="head account">
+               <span class="close" (click)="this.singleton.modalCloseFun()">&times;</span>
+               <p class="text-center"><strong>LEADER BOARD</strong></p>
+          </div>
+          <hr>
+          <div class="text-pop-inner">
+
+               <div class="board_outer">
+                    <ul>
+                         <li>RANK</li>
+                         <li>NAME</li>
+                         <li>SCORE</li>
+                    </ul>
+               </div>
+
+               <div class="board_outer">
+                    <ul *ngFor="let curr of this.paginition_array;">
+                         <li class="rank">
+                              <div class="Rank">
+                                   <span *ngIf="!this.singleton.validURL(curr.rank_image)" class="span_3 rank_number">{{curr.rank_image}}</span>
+                                   <span *ngIf="this.singleton.validURL(curr.rank_image)" class="span_3"><img src="{{curr.rank_image}}"></span>
+                                   <span class="span_2"><img onerror="this.onerror=null;this.src='assets/imgs/user.png';" src="{{curr.profile_image}}"></span>
+                                   <span class="span_1 level_number">{{curr.level}}</span>
+                              </div>
+                         </li>
+                         <li class="name">
+                              <div class="Score">
+                                   <h1>{{curr.username}}</h1>
+                                   <p class="signature">{{curr.signature}}</p>
+                              </div>
+                         </li>
+                         <li class="score">
+                              <div class="Name">
+                                   <p>{{curr.total_score}}</p>
+                              </div>
+                         </li>
+
+                        
+                    </ul>
+                    <div class="paginition" *ngIf='paginition_array.length>0'>
+                            <ion-icon *ngIf='current_page!=1' name="arrow-dropleft-circle" (click)='prevPage()'></ion-icon>
+                            <ion-icon name="arrow-dropright-circle" (click)='nextPage()'></ion-icon>
+                            <p>Displaying {{current_page}} of {{total_page}} Pages</p>
+                            <p style="font-size: 10px;">{{records_per_page}} records per page</p>
+                        </div>
+               </div>
+          </div>
+     </div>
+
+</div>

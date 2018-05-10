@@ -1,0 +1,172 @@
+<ion-header>
+     <div class="header_game">
+          <div class="info">
+               <ul>
+                    <li class="count"> <button color="dark" icon-start="" ion-button="" round="" ng-reflect-color="dark" ng-reflect-round="" class="button button-md button-default button-default-md button-round button-round-md button-md-dark"><p class="name_top" id="currentPlayerName"></p><span class="user_no"  id="currentPlayerScore"></span><div class="button-effect"></div></button></li>
+                    <li class="text_center">
+                         <ion-label class="label label-md">
+                              <h2>Round <span id="currentRound">01</span></h2>
+                         </ion-label>
+                    </li>
+                    <li class="sec" style="text-align: left;">
+                         <ion-label class="label label-md score">
+                              <h2>Score:</h2>
+                         </ion-label>
+                         <ion-label class="label label-md scorer_name" id="allPlayerScore">
+                              <div *ngFor="let curr of this.scoreArray;">
+                                   <p>{{curr.username}} </p><span class="number">{{curr.total_score}}</span>
+                              </div>
+                         </ion-label>
+                    </li>
+               </ul>
+               <ul class="second_row">
+                    <li class=""> <button color="dark" icon-start="" ion-button="" round="" ng-reflect-color="dark" ng-reflect-round="" class="button button-md button-default button-default-md button-round button-round-md button-md-dark"><span class="button-inner one" id="shotOne">1</span> <span class="button-inner" id="shotOneScore"></span><div class="button-effect"></div></button></li>
+                    <li class=""> <button color="dark" icon-start="" ion-button="" round="" ng-reflect-color="dark" ng-reflect-round="" class="button button-md button-default button-default-md button-round button-round-md button-md-dark"><span class="button-inner one" id="shotTwo">1</span> <span class="button-inner" id="shotTwoScore"></span><div class="button-effect"></div></button></li>
+                    <li class=""> <button color="dark" icon-start="" ion-button="" round="" ng-reflect-color="dark" ng-reflect-round="" class="button button-md button-default button-default-md button-round button-round-md button-md-dark"><span class="button-inner one" id="shotThree">1</span><div class="button-effect" id="shotThreeScore"></div></button></li>
+               </ul>
+          </div>
+     </div>
+</ion-header>
+<ion-content class="log app-outer">
+     <div class="background-frame">
+          <div class="img1 image-center" (click)="scorePointFunc('50')">
+               <a><img src="assets/imgs/game-img-1.png"></a>
+               <span class="number_new">50</span>
+          </div>
+          <div class="img2 image-center" (click)="scorePointFunc('40')">
+               <a><img src="assets/imgs/game-img-2.png"></a>
+               <span class="number_new blue">40</span>
+          </div>
+          <div class="img3 image-center" (click)="scorePointFunc('30')">
+               <a><img src="assets/imgs/game-img-3.png"></a>
+               <span class="number_new yellow">30</span>
+          </div>
+          <div class="img4 image-center" (click)="scorePointFunc('20')">
+               <a><img src="assets/imgs/game-img-4.png"></a>
+               <span class="number_new pink">20</span>
+          </div>
+          <div class="img5 image-center" (click)="scorePointFunc('10')">
+               <a><img src="assets/imgs/game-img-5.png"></a>
+               <span class="number_new white">10</span>
+          </div>
+
+          <ion-fab left bottom class="pause" (click)="this.pauseModalOpenFun()">
+               <button ion-fab color="dark"><ion-icon name="ios-pause"></ion-icon></button>
+          </ion-fab>
+     </div>
+</ion-content>
+
+<div *ngIf="this.singleton.pauseModal" class="modal animate-top">
+     <div class="modal-content">
+          <div class="head">
+               <p class="text-center"><strong>PAUSED</strong></p>
+          </div>
+          <hr>
+          <div class="text-pop-inner">
+
+               <ion-col class="select_tick_blue top">
+
+                    <button ion-button color="primary" class="sky_blue_btn" (click)="this.singleton.modalCloseFun()">RESUME<span class="tick_icon "> <img _ngcontent-c0="" src="assets/imgs/play.png"></span></button>
+
+               </ion-col>
+               <ion-col class="select_tick_blue">
+
+                    <button ion-button color="primary" class="sky_blue_btn" (click)="this.helpModalOpenFun('helpModal')">HELP<span class="tick_icon "><img _ngcontent-c0="" src="assets/imgs/help.png"></span></button>
+
+               </ion-col>
+
+               <ion-col class="select_tick_offline">
+                    <button ion-button color="primary" class="blue_btn">SOUND<span class="tick_icon "> <img id="soundImage" _ngcontent-c0="" src="assets/imgs/music.png"></span></button>
+               </ion-col>
+
+               <ion-col class="select_tick_blue top">
+
+                    <button ion-button color="primary" class="sky_blue_btn" (click)="this.mainMenuFunc()">MAIN MENU<span class="tick_icon "> <img _ngcontent-c0="" src="assets/imgs/menu.png"></span></button>
+
+               </ion-col>
+
+          </div>
+     </div>
+
+</div>
+
+<div *ngIf="this.singleton.helpModal" class="modal animate-top">
+
+     <div class="modal-content">
+          <div class="head">
+
+               <p class="text-center"><strong>HELP</strong></p>
+          </div>
+          <hr>
+          <div class="text-pop-inner contact_text">
+               <h3><strong>ROAD GAME Original</strong></h3>
+               <p>The object of the game is to complete what is known as a hole by playing a ball from the teeing ground into the hole on the putting green in the fewest possible number of strokes. A "round of golf' consists of playing 18 such holes.
+               </p>
+               <h3><strong>ROAD GAME AIM</strong></h3>
+               <p>The Definitions section of the Rules of Golf contains over forty Definitions which form the foundation around which the Rules of play are written.
+               </p>
+
+               <h3>
+                    <Strong>ROAD GAME 3</Strong>
+               </h3>
+               <p>1- Don't move, talk or stand close to a player making a stroke. <br> 2- Don't play until the group in front is out of the way. <br> 3- Always play without delay.<br> 4- Invite faster groups to play through.
+               </p>
+
+               <h3><strong>ROAD GAME 4</strong></h3>
+               <p>The object of the game is to complete what is known as a hole by playing a ball from the teeing ground into the hole on the putting green in the fewest possible. Don't play until the group in front is out of the way
+               </p>
+
+               <ion-col class="select_tick_blue">
+
+                    <button ion-button color="primary" class="red_btn" (click)="this.singleton.modalCloseFun()">BACK<span class="tick_icon"> <ion-icon name="ios-arrow-back"></ion-icon></span></button>
+
+               </ion-col>
+
+          </div>
+     </div>
+
+</div>
+
+<div *ngIf="this.singleton.scoreBoardModal" class="modal animate-top leader">
+     <div class="modal-content">
+          <div class="head account">
+               <p class="text-center"><strong>SCORE BOARD</strong></p>
+          </div>
+          <hr>
+          <div class="text-pop-inner">
+               <div class="board_outer fix_head">
+                    <ul>
+                         <li>RANK</li>
+                         <li>NAME</li>
+                         <li>SCORE</li>
+                    </ul>
+               </div>
+
+               <div class="board_outer no_fix_head">
+                    <ul *ngFor="let curr of this.scoreboardArray; let i = index;">
+                         <li class="rank">
+                              <div class="Rank">
+<!--                                   <span class="span_1 rank_number">{{curr.position}}</span>-->
+                                   <span class="span_2"><img src="{{curr.profile_image}}"></span>
+                                   <span class="span_3 rank_number">{{curr.position}}</span>
+                              </div>
+                         </li>
+                         <li class="name">
+                              <div class="Score">
+                                   <h1>{{curr.username}}</h1>
+                              </div>
+                         </li>
+                         <li class="score">
+                              <div class="Name">
+                                   <p>{{curr.total_score}}</p>
+                              </div>
+                         </li>
+                    </ul>
+               </div>
+          </div>
+          <div class="footer" padding>
+               <button ion-button color="primary" class="red_btn" (click)="this.backToSelectGamePageFunc()">BACK to Select Game</button>
+          </div>
+     </div>
+
+</div>

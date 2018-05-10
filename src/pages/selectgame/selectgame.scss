@@ -1,0 +1,266 @@
+@import "assets/scss/common";
+.label {
+    margin: 0;
+}
+
+.no_bg {
+    background: none;
+    margin-right: 8px;
+}
+
+page-selectgame {
+    .toolbar-title-md {
+        color: $white;
+    }
+    .app-outer {
+        background-image: url(../assets/imgs/birdieball.png);
+        background-repeat: no-repeat;
+        background-size: cover;
+        padding-top: 80px;
+        .select_game {
+            margin: 0px 0 0;
+            h2 {
+                background: $bg_mask;
+                color: $white;
+                padding: 10px 0;
+                margin: $no-margin;
+            }
+        }
+        .full_height {
+            height: 100%;
+        }
+        .app_inner {
+            padding-right: 16px;
+            padding-top: 10px;
+            background: $bg_mask;
+            margin-top: 0px;
+            height: 100%;
+            display: inherit !important;
+            overflow: scroll;
+            .item-inner {
+                border: none;
+                .orange_btn {
+                    background: $button-color-orange;
+                    max-width: auto;
+                    border-radius: 10px;
+                    font-size: 1.3rem;
+                    padding: 25px 10px;
+                    box-shadow: 0 4px #813816;
+                    min-width: auto;
+                }
+                .road_dec {
+                    background: $bg_mask;
+                    margin-top: 20px;
+                    border-radius: 10px;
+                    padding: 0 0 10px;
+                    h3 {
+                        font-size: 2.2rem;
+                        background: $bg_mask;
+                        color: $white;
+                        margin: $no-margin;
+                        padding: 5px 0;
+                        border-radius: 10px 10px 0 0;
+                        border-bottom: 2px solid #1b1e17;
+                        letter-spacing: $letter-spacing;
+                    }
+                    .road_track {
+                        padding: 20px 0;
+                        h5 {
+                            color: #fff;
+                            font-size: 1.8rem;
+                        }
+                        p {
+                            color: #fff;
+                            letter-spacing: $letter-spacing;
+                            text-align: center;
+                            font-size: 1.4rem;
+                        }
+                    }
+                }
+                .rounds_outer {
+                    h3 {
+                        font-size: 1.6rem;
+                        margin: 0;
+                        color: #fff;
+                    }
+                }
+                .add_entery {
+                    text-align: center;
+                    h3 {
+                        background: $bg_mask;
+                        padding: 5px;
+                        border-radius: 50px;
+                        padding: 15px 0;
+                        max-width: 290px;
+                        display: inline-block;
+                        width: 100%;
+                        margin-bottom: 10px;
+                        color: #fff;
+                        font-size: 20px;
+                        .entery_outer {
+                            padding: 0 40px;
+                        }
+                        span {
+                            display: inline-block;
+                            vertical-align: middle;
+                        }
+                        .remove_entery {
+                            width: 30px;
+                            height: 30px;
+                            display: inline-block;
+                            border-radius: 100%;
+                            background: #ed1c24;
+                            line-height: 34px;
+                            a {
+                                color: #fff;
+                                font-size: 18px;
+                                .icon {
+                                    font-weight: bold;
+                                    font-size: 25px;
+                                }
+                            }
+                        }
+                        .plus_entery {
+                            width: 30px;
+                            height: 30px;
+                            display: inline-block;
+                            border-radius: 100%;
+                            background: #19e034;
+                            line-height: 34px;
+                            a {
+                                color: #fff;
+                                font-size: 18px;
+                                .icon {
+                                    font-weight: bold;
+                                    font-size: 25px;
+                                }
+                            }
+                        }
+                    }
+                }
+                .select_tick {
+                    margin-bottom: 30px;
+                    text-align: center;
+                    display: inline-block;
+                    width: 100%;
+                    .blue_btn {
+                        background: #00bff3;
+                        width: 100%;
+                        margin: auto;
+                        font-size: 20px;
+                        border-radius: 50px;
+                        height: 50px;
+                        margin: 0px 0;
+                        max-width: 375px;
+                        position: relative;
+                        .tick_icon {
+                            width: 30px;
+                            height: 30px;
+                            display: inline-block;
+                            border-radius: 100%;
+                            background: #19e034;
+                            line-height: 34px;
+                            color: #fff;
+                            position: absolute;
+                            right: 35px;
+                            font-size: 28px;
+                            .ion-icon {
+                                font-size: 28px;
+                                font-weight: bold;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+    .toolbar-background-md {
+        border-color: none;
+        background: none;
+    }
+    .header-md::after,
+    .tabs-md[tabsPlacement="top"] > .tabbar::after,
+    .footer-md::before,
+    .tabs-md[tabsPlacement="bottom"] > .tabbar::before {
+        background: none;
+    }
+    ion-footer {
+        position: fixed;
+    }
+    .setting {
+        float: right;
+        background: none;
+    }
+    .row {
+        text-align: center;
+    }
+    .select_game h2 {
+        color: #fff;
+    }
+    .level_number {
+        background: #333;
+        border-radius: 50%;
+        height: 25px;
+        width: 25px;
+        line-height: 25px;
+        border: 1px solid #fff;
+    }
+    .signature {
+        text-transform: uppercase;
+    }
+  /*  .header_heading {
+        position: absolute;
+        top: 19px;
+        bottom: auto;
+        left: 0;
+        right: 0;
+       
+        text-align: center;
+    }*/
+    .scroll-content {
+        //          height: auto !important;
+    }
+    @media (max-width:1024px) and (min-width:768px) {
+        .login-outter{
+              position: absolute;
+            width: $width;
+            float: $float;
+            top: 50%;
+            left: 50%;
+            -ms-transform: translateX(-50%) translateY(-50%);
+            -webkit-transform: translateX(-50%) translateY(-50%);
+            -moz-transform: translateX(-50%)translateY(-50%);
+            -o-transform: translateX(-50%) translateY(-50%);
+            transform: translateX(-50%) translateY(-50%);
+        }
+        .road_track p {
+            font-size: 2.5rem !important;
+        }
+        .orange_btn {
+            font-size: 2.3rem !important;
+        }
+        .road_dec h3 {
+            font-size: 3.2rem !important;
+            padding: 16px 0 !important;
+        }
+        .road_track h5 {
+    font-size: 2.5rem !important;
+}
+      .rounds_outer h3 {
+            font-size: 2.6rem !important;}
+    }
+
+    .paginition {
+        text-align: center;
+        ion-icon {
+            font-size: 2em;
+            color: white;
+            padding: 4px;
+        }
+        p{
+            text-align: center;
+            color: white;
+        }
+    }
+}
+

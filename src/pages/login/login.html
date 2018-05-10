@@ -1,0 +1,51 @@
+<ion-content class="log app-outer">
+     <div padding class="background-frame">
+          <div class="login-outter">
+               <div class="splash_top_logo">
+                    <img src="assets/imgs/login_logo.png">
+                    <h3>LOGIN</h3>
+               </div>
+               <div class="inner-box">
+                    <form [formGroup]="login" >
+                         <ion-list inset>
+
+                              <ion-item>
+                                   <ion-label>
+                                        <ion-icon class="at" ios="ios-at-outline" md="md-at"></ion-icon>
+                                   </ion-label>
+                                   <ion-input type="text" formControlName="username" [(ngModel)]="username" placeholder="User Name / Email"></ion-input>
+                              </ion-item>
+
+                              <ion-item>
+                                   <ion-label>
+                                        <ion-icon name="lock" role="img" class="icon icon-md ion-md-lock password" aria-label="lock"></ion-icon>
+                                   </ion-label>
+                                   <ion-input type="password" formControlName="password" [(ngModel)]="password" placeholder="Password" (keyup.enter)="loginFunc()"></ion-input>
+                              </ion-item>
+
+                         </ion-list>
+
+                         <ion-item class="remember">
+                              <ion-label>Remember Me</ion-label>
+                              <ion-checkbox [checked]="isChecked" (ionChange)="addValue($event)" ></ion-checkbox>
+                         </ion-item>
+
+                         <ion-item class="forget" block (click)="forgotPasswordPrompt()">
+                              <h2><a>Forgot Password</a></h2>
+                         </ion-item>
+
+                    </form>
+               </div>
+
+               <div class="style_box">
+                    <button ion-button color="primary" class="orange_btn" [disabled]="login.invalid" (click)="loginFunc()">LOG IN</button>
+               </div>
+               <div class="style_box_blue" [navPush]="signupPage">
+                    <button ion-button color="primary" class="blue_btn">SIGN UP</button>
+               </div>
+               <div class="style_box_grey">
+                    <button ion-button color="primary" class="gray_btn" (click)="offlineModeFunc()">OFFLINE</button>
+               </div>
+          </div>
+     </div>
+</ion-content>

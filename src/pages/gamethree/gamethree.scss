@@ -1,0 +1,114 @@
+@import "assets/scss/common";
+page-gameplay2 {
+     .app-outer {
+          background-image: url(../assets/imgs/game_body_back_1.png);
+          background-repeat: no-repeat;
+          background-size: cover;
+          padding-top: 120px;
+          height: 100%;
+          width: 100%;
+          background-position: top;
+          .splash_top_logo img {
+               width: 300px;
+          }
+          .toolbar-background-md {
+               border-color: none;
+               background: none;
+          }
+          .back-button {
+               display: block !important;
+               color: #fff;
+          }
+          .header-md::after,
+          .tabs-md[tabsPlacement="top"] > .tabbar::after,
+          .footer-md::before,
+          .tabs-md[tabsPlacement="bottom"] > .tabbar::before {
+               background: none;
+          }
+     }
+     .sec {
+          width: 32% !important;
+          float: right;
+     }
+     .image-center {
+          text-align: center;
+          height: 20%;
+          position: relative;
+     }
+     .scroll-content {
+          margin-top: 110px !important;
+          height: auto !important;
+     }
+     .img1 img {
+          width: 100%;
+          height: 100%;
+     }
+     .img2 img {
+          width: 100%;
+          height: 100%;
+     }
+     .img3 img {
+          width: 100%;
+          height: 100%;
+     }
+     .img4 img {
+          width: 100%;
+          height: 100%;
+     }
+     .img5 img {
+          width: 100%;
+          height: 100%;
+     }
+
+     .img1 {
+          max-width: 26%;
+          margin: auto;
+          width: 100%;
+     }
+     .img2 {
+          max-width: 30%;
+          margin: auto;
+          width: 100%;
+
+     }
+     .img3 {
+          max-width: 33%;
+          margin: auto;
+          width: 100%;
+     }
+     .img4 {
+          max-width: 38%;
+          margin: auto;
+          width: 100%;
+     }
+     .img5 {
+          max-width: 45%;
+          margin: auto;
+          width: 100%;
+     }
+
+     .background-frame {
+          height: 100%;
+          padding: 0px 16px 0;
+          overflow: hidden;
+     }
+
+     .number_new {
+          position: absolute;
+          top: 0px;
+          bottom: 0;
+          width: 50px;
+          height: 50px;
+          border-radius: 50px;
+          right: auto;
+          left: auto;
+          color: #000;
+          line-height: 50px;
+          font-size: 26px;
+          text-align: center;
+          margin: auto -24px;
+          font-weight: bold;
+     }
+
+
+}

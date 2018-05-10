@@ -1,0 +1,40 @@
+$width:100%;
+$float:none;
+$float-left:left;
+$float-right:right;
+$margin-all:0 auto;
+$padding-all:0 auto;
+$height:100%;
+$text-center:center;
+$button-color-orange:#f26522;
+$button-color-blue:#00bff3;
+$button-color-grey:#363636;
+$white:#fff;
+$text-light:#b2b2b2;
+$input-text:#b7b7b7;
+$letter-spacing:0.2px;
+$bg_mask:rgba(0, 0, 0, 0.2);
+$no-margin:0;
+
+
+
+/*for padding , margin , fonts*/
+
+$spaceamounts: (-4, 0, 8, 10, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 36); // Adjust this to include the pixel amounts you need.
+$sides: (top, bottom, left, right); // Leave this variable alone
+@each $space in $spaceamounts {
+    @each $side in $sides {
+        .m-#{str-slice($side, 0, 1)}-#{$space} {
+            margin-#{$side}: #{$space}px;
+        }
+        .p-#{str-slice($side, 0, 1)}-#{$space} {
+            padding-#{$side}: #{$space}px;
+        }
+    }
+    .f-#{$space} {
+        font-size: #{$space}px;
+    }
+    .l-#{$space} {
+        line-height: #{$space}px;
+    }
+}

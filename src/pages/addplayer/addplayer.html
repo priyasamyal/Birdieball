@@ -1,0 +1,156 @@
+<ion-header>
+     <ion-navbar>
+          <button ion-button menuToggle>
+               <ion-icon name="menu"></ion-icon>
+          </button>
+          <ion-title class="header_heading">ADD PLAYERS</ion-title>
+     </ion-navbar>
+</ion-header>
+
+<ion-content class="app-outer">
+
+<!--     <ion-auto-complete [dataProvider]="completeTestService" [options]="{ placeholder : 'User Name' }"></ion-auto-complete>-->
+     
+     <div class="full_height">
+          <ion-item class="app_inner">
+
+
+               <ion-row>
+                    <!-- <ion-row class="player_entery">
+                            <ion-col class="game_name">
+                                 <label>PLAYER </label>
+                            </ion-col>
+                            <span class="tick_icon"><a><ion-icon ios="ios-checkmark" md="md-checkmark"></ion-icon></a></span>
+                            <ion-item class="player_filds">
+                                 <ion-input  type="text" placeholder="User Name"  ></ion-input>
+                            </ion-item>
+                       </ion-row> -->
+                    <form class="form_outer" [formGroup]="playerAdd">
+                         <ion-list>
+
+                              <ion-row class="player_add">
+                                   <ion-col class="game_name" style="text-align: center;">
+                                        <label style="white-space: normal;">Do not add player to play in SINGLE PLAYER MODE</label>
+                                   </ion-col>
+                              </ion-row>
+
+                              <div *ngIf="this.singleton.isUserLoggedIn" class="user-logged-in">
+                                   <ion-row class="player_entery">
+                                        <ion-col class="game_name">
+                                             <label>PLAYER 1</label>
+                                        </ion-col>
+                                        <span class="tick_icon"><a><ion-icon ios="ios-checkmark" md="md-checkmark"></ion-icon></a></span>
+                                        <ion-item class="player_filds">
+                                             <ion-input disabled readonly type="text" placeholder="User Name" formControlName="playerOne" [(ngModel)]="playerOne"></ion-input>
+                                        </ion-item>
+                                   </ion-row>
+
+                                   <ion-row class="player_add">
+                                        <ion-col class="game_name" col-12>
+                                             <label>PLAYER 2</label>
+                                        </ion-col>
+                                        <ion-col col-10 class="no_pad">
+                                             <ion-item class="my-select">
+                                                  <select-searchable [noItemsFoundText]="'No username found.'" searchPlaceholder="Type username" [items]="this.singleton.tempActiveUsers" formControlName="playerTwo" [(ngModel)]="playerTwo" itemValueField="user_id" itemTextField="username" [canSearch]="true" (onChange)="portChange($event)" >
+                                                  </select-searchable>
+                                             </ion-item>
+                                        </ion-col>
+                                        <ion-col col-2 class="no_pad" (click)="resetCurrentField('playerTwo')">
+                                             <ion-item class="my-select-sec">
+                                                  <span class="cross_icon_new"><a><ion-icon name="close" class="cross_ion"></ion-icon></a></span>
+                                             </ion-item>
+                                        </ion-col>
+                                   </ion-row>
+
+                                   <ion-row class="player_add">
+                                        <ion-col class="game_name" col-12>
+                                             <label>PLAYER 3</label>
+                                        </ion-col>
+                                        <ion-col col-10 class="no_pad">
+                                             <ion-item class="my-select">
+                                                  <select-searchable [noItemsFoundText]="'No username found.'" searchPlaceholder="Type username" [items]="this.singleton.tempActiveUsers" formControlName="playerThree" [(ngModel)]="playerThree" itemValueField="user_id" itemTextField="username" [canSearch]="true" (onChange)="portChange($event)" >
+                                                  </select-searchable>
+                                             </ion-item>
+                                        </ion-col>
+                                        <ion-col col-2 class="no_pad" (click)="resetCurrentField('playerThree')">
+                                             <ion-item class="my-select-sec">
+                                                  <span class="cross_icon_new"><a><ion-icon name="close" class="cross_ion"></ion-icon></a></span>
+                                             </ion-item>
+                                        </ion-col>
+                                   </ion-row>
+
+                                   <ion-row class="player_add">
+                                        <ion-col class="game_name" col-12>
+                                             <label>PLAYER 4</label>
+                                        </ion-col>
+                                        <ion-col col-10 class="no_pad">
+                                             <ion-item class="my-select">
+                                                  <select-searchable [noItemsFoundText]="'No username found.'" searchPlaceholder="Type username" [items]="this.singleton.tempActiveUsers" formControlName="playerFour" [(ngModel)]="playerFour" itemValueField="user_id" itemTextField="username" [canSearch]="true" (onChange)="portChange($event)" >
+                                                  </select-searchable>
+                                             </ion-item>
+                                        </ion-col>
+                                        <ion-col col-2 class="no_pad" (click)="resetCurrentField('playerFour')">
+                                             <ion-item class="my-select-sec">
+                                                  <span class="cross_icon_new"><a><ion-icon name="close" class="cross_ion"></ion-icon></a></span>
+                                             </ion-item>
+                                        </ion-col>
+                                   </ion-row>
+                                  
+                              </div>
+
+                              <div *ngIf="!this.singleton.isUserLoggedIn">
+                                   <ion-row class="player_entery">
+                                        <ion-col class="game_name">
+                                             <label>PLAYER 1</label>
+                                        </ion-col>
+                                        <span class="tick_icon"><a><ion-icon ios="ios-checkmark" md="md-checkmark"></ion-icon></a></span>
+                                        <ion-item class="player_filds">
+                                             <ion-input type="text" placeholder="User Name" formControlName="playerOne" [(ngModel)]="playerOne"></ion-input>
+                                        </ion-item>
+                                   </ion-row>
+
+                                   <ion-row class="player_entery">
+                                        <ion-col class="game_name">
+                                             <label>PLAYER 2</label>
+                                        </ion-col>
+                                        <span class="input_cross_icon_new" (click)="resetCurrentField('playerTwo')"><a><ion-icon name="close" class="cross_ion"></ion-icon></a></span>
+                                        <ion-item class="player_filds">
+                                             <ion-input type="text" placeholder="User Name" formControlName="playerTwo" [(ngModel)]="playerTwo"></ion-input>
+                                        </ion-item>
+                                   </ion-row>
+
+                                   <ion-row class="player_entery">
+                                        <ion-col class="game_name">
+                                             <label>PLAYER 3</label>
+                                        </ion-col>
+                                        <span class="input_cross_icon_new" (click)="resetCurrentField('playerThree')"><a><ion-icon name="close" class="cross_ion"></ion-icon></a></span>
+                                        <ion-item class="player_filds">
+                                             <ion-input type="text" placeholder="User Name" formControlName="playerThree" [(ngModel)]="playerThree"></ion-input>
+                                        </ion-item>
+                                   </ion-row>
+
+                                   <ion-row class="player_entery">
+                                        <ion-col class="game_name">
+                                             <label>PLAYER 4</label>
+                                        </ion-col>
+                                        <span class="input_cross_icon_new" (click)="resetCurrentField('playerFour')"><a><ion-icon name="close" class="cross_ion"></ion-icon></a></span>
+                                        <ion-item class="player_filds">
+                                             <ion-input type="text" placeholder="User Name" formControlName="playerFour" [(ngModel)]="playerFour"></ion-input>
+                                        </ion-item>
+                                   </ion-row>
+                              </div>
+
+                         </ion-list>
+                    </form>
+               </ion-row>
+
+               <ion-row>
+                    <ion-col class="select_tick">
+                         <button ion-button color="primary" class="blue_btn" (click)="addPlayerFunc()">PLAY NOW<span class="tick_icon"><ion-icon ios="ios-checkmark" md="md-checkmark"></ion-icon></span></button>
+                    </ion-col>
+               </ion-row>
+
+          </ion-item>
+     </div>
+
+</ion-content>

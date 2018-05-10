@@ -1,0 +1,665 @@
+// http://ionicframework.com/docs/theming/
+// App Global Sass
+// --------------------------------------------------
+// Put style rules here that you want to apply globally. These
+// styles are for the entire app and not just one component.
+// Additionally, this file can be also used as an entry point
+// to import other Sass files to be included in the output CSS.
+//
+// Shared Sass variables, which can be used to adjust Ionic's
+// default Sass variables, belong in "theme/variables.scss".
+//
+// To declare rules for a specific mode, create a child rule
+// for the .md, .ios, or .wp mode classes. The mode class is
+// automatically applied to the <body> element in the app.
+@import "../../node_modules/ionic2-auto-complete/auto-complete";
+@font-face {
+    font-family: 'RoundedElegance-Regular';
+    src: url('../assets/fonts/RoundedElegance-Regular.eot') format('embedded-opentype'), url('../assets/fonts/RoundedElegance-Regular.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+ion-app.ios {
+    font-family: 'RoundedElegance-Regular';
+    font-size: 1.4rem;
+    background-color: #fff;
+}
+ion-app.md {
+    font-family: 'RoundedElegance-Regular';
+    font-size: 1.4rem;
+    background-color: #fff;
+}
+ion-app.wp {
+    font-family: 'RoundedElegance-Regular';
+    font-size: 1.4rem;
+    background-color: #fff;
+}
+
+/* Modal css start */
+
+.modal {
+    z-index: 9999;
+    padding-top: 0px;
+    left: 0;
+    top: 0;
+    width: 100%;
+    overflow: hidden;
+    background-color: rgba(0, 0, 0, 0.4);
+    position: fixed;
+    height: 100%;
+}
+
+/* Modal Content */
+
+.modal-content {
+    background-color: #000;
+    margin: auto;
+    padding: 0px;
+    border: 0px solid #888;
+    width: 90% !important;
+    border-radius: 10px;
+    height: auto;
+    left: 50%;
+    position: absolute;
+    top: 50%;
+    width: 100%;
+    transform: translateX(-50%) translateY(-50%);
+    -moz-transform: translateX(-50%) translateY(-50%);
+    -webkit-transform: translateX(-50%) translateY(-50%);
+    -o-transform: translateX(-50%) translateY(-50%);
+}
+.modal {
+    /* The Close Button */
+    .close {
+        color: #fff;
+        float: right;
+        font-size: 26px;
+        font-weight: bold;
+        background: rgba(0, 0, 0, 0.5);
+        border-radius: 10px;
+        width: 30px;
+        height: 30px;
+        text-align: center;
+        line-height: 33px;
+    }
+    .close:hover,
+    .close:focus {
+        text-decoration: none;
+        cursor: pointer;
+    }
+    p {
+        margin: 5px 0 10px;
+        text-align: center;
+        font-size: 24px;
+        letter-spacing: 1px;
+    }
+    .head {
+        position: fixed !important;
+        left: auto;
+        right: auto;
+        background: #f26522;
+        width: 100%;
+        padding: 15px;
+        border-radius: 10px;
+        height: 60px;
+        border-bottom-left-radius: 0px;
+        border-bottom-right-radius: 0px;
+        p {
+            color: #fff;
+            font-size: 25px;
+            text-align: center;
+        }
+    }
+    .text-pop-inner {
+        margin-top: 52px;
+        padding: 0 10px;
+        padding-bottom: 10px;
+        max-height: 380px;
+        height: 100%;
+        overflow: auto;
+    }
+    .select_tick {
+        margin: 10px 0 30px;
+        text-align: center;
+        display: inline-block;
+        width: 100%;
+        .blue_btn {
+            background: #8dc63f;
+            width: 100%;
+            margin: auto;
+            font-size: 18px;
+            border-radius: 50px;
+            height: 50px;
+            margin: 0px 0;
+            max-width: 375px;
+            position: relative;
+            .tick_icon {
+                display: inline-block;
+                color: #fff;
+                position: absolute;
+                right: 35px;
+                top: 11px;
+                .ion-icon {
+                    font-size: 28px;
+                    font-weight: bold;
+                }
+            }
+        }
+    }
+    .select_tick_blue {
+        margin: 0px 0 10px;
+        text-align: center;
+        display: inline-block;
+        width: 100%;
+        .sky_blue_btn {
+            background: #00bff3;
+            width: 100%;
+            margin: auto;
+            font-size: 18px;
+            border-radius: 50px;
+            height: 50px;
+            margin: 0px 0;
+            max-width: 375px;
+            position: relative;
+            .tick_icon {
+                display: inline-block;
+                color: #fff;
+                position: absolute;
+                right: 25px;
+                top: 14px;
+                .ion-icon {
+                    font-size: 25x;
+                    font-weight: bold;
+                }
+            }
+        }
+    }
+    .contact_text {
+        padding: 10px 15px;
+    }
+    .contact_text p {
+        color: #fff;
+        text-align: left;
+        font-size: 14px;
+        font-weight: 500;
+        padding-bottom: 15px;
+    }
+    .red_btn {
+        background: #ff373f;
+        width: 100%;
+        margin: auto;
+        font-size: 18px;
+        border-radius: 50px;
+        height: 50px;
+        margin: 0px 0;
+        max-width: 375px;
+        position: relative;
+        margin-top: 15px;
+        .tick_icon {
+            display: inline-block;
+            color: #fff;
+            position: absolute;
+            left: 35px;
+            top: 15px;
+            .ion-icon {
+                font-size: 25x;
+                font-weight: bold;
+            }
+        }
+    }
+    .contact_text h3 {
+        color: #f26522;
+        font-size: 18px;
+    }
+    .top {
+        margin-top: 10px;
+    }
+    .select_tick_offline {
+        margin: 0px 0 10px;
+        text-align: center;
+        display: inline-block;
+        width: 100%;
+        .blue_btn {
+            background: #898989;
+            width: 100%;
+            margin: auto;
+            font-size: 18px;
+            border-radius: 50px;
+            height: 50px;
+            margin: 0px 0;
+            max-width: 375px;
+            position: relative;
+            .tick_icon {
+                display: inline-block;
+                color: #fff;
+                position: absolute;
+                right: 35px;
+                top: 11px;
+                .ion-icon {
+                    font-size: 25x;
+                    font-weight: bold;
+                }
+            }
+        }
+    }
+    .account {
+        background: #00bff3;
+    }
+    .item-md {
+        background: none;
+    }
+    .item-md.item-block .item-inner {
+        border-bottom: 0px;
+    }
+    .item-md ion-avatar img {
+        width: 80px;
+        height: 80px;
+    }
+    .tick_icon img {
+        width: 26px;
+    }
+    .header-ios .toolbar-ios:last-child .toolbar-background-ios {
+        border-width: 0;
+    }
+    .toolbar-background-ios {
+        background: none;
+    }
+    .button_back {
+        text-align: center;
+        margin-top: 15px;
+    }
+    .left_Col {
+        font-size: 14px;
+        color: #fff;
+        text-align: left;
+        font-weight: bold;
+        line-height: 20px;
+    }
+    .right_col {
+        font-size: 14px;
+        color: #fff;
+        text-align: right;
+        font-weight: bold;
+        line-height: 20px;
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+    }
+    .address {
+        text-align: left;
+    }
+    .top-2 {
+        margin-top: 20px;
+    }
+    .leader .modal-content {
+        background: #004355;
+    }
+    .board_outer ul {
+        padding-left: 0px;
+        margin-top: 0px;
+    }
+    .board_outer ul li {
+        color: #fff;
+        list-style-type: none;
+        max-width: 33%;
+        width: 100%;
+        float: left;
+        text-align: center;
+    }
+    .board_outer {
+        float: left;
+        width: 100%;
+        margin-top: 20px;
+        padding: 10px;
+        background: #00151b;
+        border-radius: 10px;
+        border-top: 10px solid #000304;
+    }
+    .board_outer ul {
+        width: 100%;
+        float: left;
+        margin: 6px 0;
+        text-align: center;
+    }
+    .span_1 {
+        z-index: 999;
+        position: absolute;
+        left: 0;
+        top: 0px;
+    }
+    .span_1 img {
+        width: 30px;
+    }
+    .span_2 {
+        position: relative;
+        left: 0;
+        float: left;
+    }
+    .span_2 img {
+        width: 80px;
+        height: 80px;
+        border-radius: 50%;
+    }
+    .span_3 {
+        position: absolute;
+        left: 50px;
+        top: 50px;
+        z-index: 9;
+    }
+    .span_3 img {
+        width: 30px;
+    }
+    .board_outer .Rank {
+        position: relative;
+        max-width: 140px;
+        width: 100%;
+        /* float: left;
+        */
+        display: inline-block;
+    }
+    .board_outer .Score {
+        max-width: 140px;
+        width: 100%;
+        /*float: left;
+        */
+        display: inline-block;
+    }
+    .board_outer .Score h1,
+    p {
+        margin: 0px;
+        font-size: 14px;
+        text-align: left;
+    }
+    .board_outer .Name {
+        max-width: 140px;
+        width: 100%;
+        float: left;
+        display: inline-block;
+    }
+    .board_outer.Name p {
+        text-align: right;
+    }
+    .rank {
+        vertical-align: middle;
+        display: inline-block;
+        float: none !important;
+    }
+    .name {
+        vertical-align: middle;
+        display: inline-block;
+        float: none !important;
+        margin: 0 0 0 -5px;
+    }
+    .score {
+        vertical-align: middle;
+        display: inline-block;
+        float: none !important;
+        margin: 0 0 0 -5px;
+    }
+    .Name p {
+        text-align: center;
+    }
+    .account p {
+        text-align: center;
+        font-size: 24px;
+    }
+}
+ion-alert {
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    height: 100%;
+}
+#fullname {
+    font-weight: bold;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+.modal .button-inner {
+    color: #fff !important;
+}
+
+/* Modal css end */
+
+
+/* Game header css start */
+
+.header_game {
+    background-image: url(../assets/imgs/header-back.png);
+    background-size: cover;
+    height: 120px;
+    width: 100%;
+    .fab-md-dark {
+        color: #fff;
+        background-color: rgba(0, 0, 0, 0.6);
+    }
+    ion-fab {
+        position: fixed;
+        z-index: 999;
+    }
+    .pause {
+        bottom: 80px;
+    }
+    .fab ion-icon {
+        font-size: 40px;
+        line-height: 50px;
+    }
+    .info ul {
+        margin: 0px;
+        padding: 0px;
+        float: left;
+        width: 100%;
+        text-align: center;
+    }
+    .info ul li {
+        list-style-type: none;
+        display: inline-block;
+        float: left;
+        width: 30%;
+        margin: 10px 0px;
+        text-align: left;
+    }
+    .text_center {
+        text-align: center !important;
+    }
+    .count {
+        margin: 10px 0 0 0px !important;
+    }
+    .count .new_btn {
+        background: #c4dae8;
+        border: 3px solid #fff;
+        font-size: 16px;
+        color: #000;
+        font-weight: bold;
+        padding: 7px 9px 6px 4px;
+        border-top-right-radius: 64px;
+        border-bottom-right-radius: 64px;
+        border-top-left-radius: 0;
+        border-bottom-left-radius: 0;
+        margin-left: 0px;
+        margin: 0px;
+    }
+    .label h2 {
+        color: #74e4d7;
+        font-size: 12px;
+        text-transform: uppercase;
+        margin: 10px 0;
+        font-style: italic;
+    }
+    .name_top {
+        //          margin: 0 5px 0 0;
+        float: left;
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        max-width: 57px;
+        width: 100%;
+        text-align: left;
+        line-height: 20px;
+        font-size: 12px;
+        padding-right: 5px;
+    }
+    .user_no {
+        line-height: 20px;
+        font-size: 14px;
+        padding-top: 2px;
+    }
+    .label h2 span {
+        background: #10bfe9;
+        color: #fff;
+        border-radius: 50%;
+        font-size: 16px;
+        height: 20px;
+        width: 20px;
+        padding: 8px;
+        border: 2px solid #fff;
+    }
+    .score h2 {
+        color: #ff7253 !important;
+        font-weight: bold;
+        font-style: italic;
+    }
+    .second_row li {
+        width: 22% !important;
+        margin: 0px 0px 0 10px !important;
+    }
+    .second_row button {
+        background: #51667b;
+        border: 2px solid #fff;
+        width: 75px; //          padding: 0 10px 0 15px !important;
+        margin: 0;
+    }
+    .button-inner {
+        //          display: initial !important;
+    }
+    .one {
+        background: #fff;
+        color: #000;
+        padding: 2px 5px;
+        height: auto;
+        border-radius: 4px;
+        line-height: 13px;
+    }
+    .scorer_name {
+        float: right;
+        margin-top: 3px;
+        width: 60%;
+        p {
+            margin: 7px 0 0;
+            color: #fff;
+            font-size: 12px;
+            text-overflow: ellipsis;
+            overflow: hidden;
+            width: 34px;
+            height: 1.2em;
+            white-space: nowrap;
+        }
+        .number {
+            float: right;
+            color: #fff;
+            margin-top: -13px;
+            margin-left: 35px;
+            float: left;
+        }
+    }
+    .sec {
+        width: 38% !important;
+        float: right;
+    }
+    .second_row {
+        max-width: 350px !important;
+        position: absolute;
+        top: auto;
+        float: left;
+        width: 100%;
+        bottom: 20px;
+    }
+    .score {
+        width: 36%;
+        float: left;
+    }
+}
+page-selectgame .back-button,
+page-selectplayer .back-button,
+page-signup .back-button,
+page-addplayer .back-button {
+    color: #fff;
+    position: absolute;
+    z-index: 99;
+}
+.back-button.show-back-button {
+    display: block !important; 
+}
+.pause button {
+    background: rgba(242, 108, 79, 0.9);
+}
+.rank_number {
+    background: #ff8e00;
+    padding: 5px;
+    border-radius: 6px;
+    border-top: 4px solid #915600;
+}
+.footer .red_btn {
+    margin-top: 0px;
+}
+.leader .text-pop-inner {
+    background: #004659;
+}
+.fix_head {
+    position: fixed;
+    left: 0;
+    width: 95% !important;
+    margin: 20px auto;
+    right: 0;
+}
+.no_fix_head {
+    margin-top: 90px !important;
+}
+.Score h1 {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    max-width: 87px;
+}
+.full_height {
+    height: auto;
+    position: relative;
+    overflow: scroll;
+}
+.image-center {
+    z-index: 2;
+}
+
+/* Game header css end */
+
+#shotOneScore,
+#shotTwoScore,
+#shotThreeScore {
+    padding-top: 4px;
+}
+li.miactive button {
+    background-color: #222 !important;
+    webkit-box-shadow: 1px 1px 12px 2px rgba(255, 255, 255, 0.75);
+    -webkit-box-shadow: 1px 1px 12px 2px rgba(255, 255, 255, 0.75);
+    box-shadow: 1px 1px 12px 2px rgba(255, 255, 255, 0.75)
+}
+.select-searchable-icon {
+    width: 40px;
+}
+.select-searchable-label {
+    overflow: visible;
+}
+.select-searchable-value {
+    max-width: 100%;
+    width: 100%;
+    padding-left: 10px !important;
+}
+.toolbar-title-md {
+    text-align: center;
+}
+.shadow {
+    webkit-box-shadow: 1px 1px 12px 2px rgba(255, 255, 255, 0.75);
+    -moz-box-shadow: 1px 1px 12px 2px rgba(255, 255, 255, 0.75);
+    box-shadow: 1px 1px 12px 2px rgba(255, 255, 255, 0.75)
+}
