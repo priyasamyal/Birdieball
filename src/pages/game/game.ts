@@ -30,17 +30,13 @@ export class Game1playPage {
      constructor(public commmon:CommonProvider,public alertCtrl: AlertController, public navCtrl: NavController, public singleton: SingletonService, public http: Http) {
             this.http = http;
             this.numberOfRound = Array.from(new Array(this.numberX), (x, i) => i = (i + 1 < 10) ? parseInt('0' + (i + 1)) : i + 1);
-        
-          
-     }
+      }
      
       getPreviousRoundScore(val) {
 
         let total_score=0;
         var same_player_array = [];
-        
        console.log(val,"value", this.currentPlayerName);
-     
        same_player_array = this.gameArray.filter(data=>data.player_name==this.currentPlayerName);
 
         if(same_player_array[0].rounds[this.currentRound-1].shots.length==3){
@@ -244,6 +240,178 @@ export class Game1playPage {
      * Set score of current shot.
      */
       scorePointFunc(selectedScore) {
+        let total_score=0;
+        var same_player_array = [];
+
+        /**Add rounds and score of user in array for first time */
+        if(this.gameArray.length==0 || this.gameArray.filter(data=>data.player_name==this.currentPlayerName).length==0 || this.isNew){
+                    
+                    var playerObj = this.singleton.getObjectBasedOnValueFunc(this.scoreArray, "username", this.currentPlayerName);
+                    var userIndex = this.singleton.selectGameObj.user_id.indexOf(playerObj.user_id); 
+                    
+                    /** new player is pushing in array.. */
+                    if(this.gameArray.length==0 || this.gameArray.filter(data=>data.player_name==this.currentPlayerName).length==0 ){
+                        this.gameArray.push({
+                                'user_id' : playerObj.user_id,
+                                'player_name':this.currentPlayerName,
+                                'rounds':[{'shots' :[selectedScore], 'round_total':selectedScore}],
+                                'total_score':selectedScore
+                            });
+                            console.log("new player is pushing in array..",this.gameArray)
+                    }
+
+                    /**to check  if one round is over */
+                    same_player_array = this.gameArray.filter(data=>data.player_name==this.currentPlayerName);
+                     
+                  
+                    
+                    /**to check  if one round is over */
+                        if(this.isNew){
+                            console.log("call is.isNew..",this.singleton.selectGameObj.game_rounds,same_player_array[0].rounds.length);
+                                if(same_player_array[0].rounds.length-1 <= this.singleton.selectGameObj.game_rounds) { 
+                                    /**add array of next round when shots are added in a round */
+                                        if(same_player_array[0].rounds[same_player_array[0].rounds.length-1].shots.length==3){
+                                            if(this.singleton.selectGameObj.game_rounds==this.gameArray[this.gameArray.length-1].rounds.length-1){
+
+                                            }else{
+
+                                                console.log("previous player="+this.currentPlayerName )
+                                                 this.currentRound = this.numberOfRound.length;
+                                                this.currentPlayerName = (userIndex+1)==this.singleton.selectGameObj.user_id.length ? this.singleton.selectGameObj.score_array[0].username : this.singleton.selectGameObj.score_array[userIndex+1].username;
+                                                console.log("current  player="+this.currentPlayerName )
+                                                 if(this.gameArray.filter(data=>data.player_name==this.currentPlayerName).length==0){
+                                                        console.log("new player for currewnt round=")
+                                                        playerObj = this.singleton.getObjectBasedOnValueFunc(this.scoreArray, "username", this.currentPlayerName);
+                                                        userIndex = this.singleton.selectGameObj.user_id.indexOf(playerObj.user_id); 
+                                                        this.gameArray.push({
+                                                            'user_id' : playerObj.user_id,
+                                                            'player_name':this.currentPlayerName,
+                                                            'rounds':[{'shots' :[selectedScore], 'round_total':selectedScore}],
+                                                            'total_score':selectedScore
+                                                        }); 
+
+                                                        
+                                                 }
+                                                 else{
+                                                    if(this.singleton.selectGameObj.game_rounds!=this.gameArray[this.gameArray.length-1].rounds.length-1){
+
+                                                    same_player_array = this.gameArray.filter(data=>data.player_name==this.currentPlayerName);
+                                                    same_player_array[0].rounds.push({'shots' :[selectedScore], 'round_total':selectedScore});
+                                                                    /**Find total score of rounds */
+                                                                    let subTotal = 0;
+                                                                    same_player_array[0].rounds[same_player_array[0].rounds.length-1].shots.map(m=>{
+                                                                    subTotal=Number(m) + subTotal;
+                                                                    })
+                                                                    same_player_array[0].rounds[same_player_array[0].rounds.length-1].round_total = subTotal;
+                                                                    
+                                                                    /**Find total score of player */
+                                                                    same_player_array[0].rounds.map(m=>{
+                                                                        
+                                                                        total_score=Number(m.round_total)+total_score;
+                                                                    })
+                                                                    same_player_array[0].total_score=total_score;
+
+                                                    console.log("ROund change to",this.currentRound,same_player_array,this.currentPlayerName);
+                                                    /** Add same_player_array to the final gameArray*/
+                                                    this.gameArray.map(m=>{
+                                                        if(m.player_name==this.currentPlayerName){
+                                                            m=same_player_array[0];
+                                                        this.commonParameterUpdate(same_player_array[0]);
+                                                        }
+                                                    });
+                                                 }
+                                                }
+                                              console.log("change user of current rounds",same_player_array);
+                                            }
+
+                                          
+                                           
+                                        
+                                        }
+                                 }
+
+                                    /**increment current round */
+                                    if(same_player_array[0].rounds.length==this.singleton.selectGameObj.game_rounds){
+                                            same_player_array[0].rounds.push({'shots' :[selectedScore], 'round_total':selectedScore});
+                                            console.log("increment current round",same_player_array);
+                                    }
+                        }
+                      this.isNew = false;
+                        same_player_array = this.gameArray.filter(data=>data.player_name==this.currentPlayerName);
+                        this.commonParameterUpdate(same_player_array[0])
+                    
+        } 
+        
+        else {
+            /**Add rounds score of user in array after first time */
+                      
+            same_player_array = this.gameArray.filter(data=>data.player_name==this.currentPlayerName); // to check if points is scoed by current user
+            console.log(same_player_array[0].rounds.length,this.singleton.selectGameObj.game_rounds,"f")
+           
+                    if(same_player_array[0].rounds.length-1 <=this.singleton.selectGameObj.game_rounds) {  // to check if game does not exceeds the round selected
+                        console.log("else block",this.currentRound,this.currentPlayerName)
+                               /**add array of next round when  shots are added in a round */
+                                if(same_player_array[0].rounds[same_player_array[0].rounds.length-1].shots.length>2){
+                                    same_player_array[0].rounds.push({'shots' :[selectedScore], 'round_total':selectedScore});
+                                  }else{
+                                    same_player_array[0].rounds[same_player_array[0].rounds.length-1].shots.push(selectedScore);
+                                   }
+                                /**Find total score of rounds */
+                                    let subTotal = 0;
+                                    same_player_array[0].rounds[same_player_array[0].rounds.length-1].shots.map(m=>{
+                                    subTotal=Number(m) + subTotal;
+                                    })
+                                    same_player_array[0].rounds[same_player_array[0].rounds.length-1].round_total = subTotal;
+                            
+                                /**Find total score of player */
+                                same_player_array[0].rounds.map(m=>{
+                                    total_score=Number(m.round_total)+total_score;
+                                })
+
+                                 same_player_array[0].total_score=total_score;
+                         }
+                                  /** Add same_player_array to the final gameArray*/
+                                   this.gameArray.map(m=>{
+                                      if(m.player_name==this.currentPlayerName){
+                                             m=same_player_array[0];
+                                            this.commonParameterUpdate(same_player_array[0]);
+                                         }
+                                     });
+                             }
+    
+       
+         console.log(JSON.stringify(same_player_array[0]));
+         this.scoreArray.map(m=>{
+            if(m.username==this.currentPlayerName){
+                m.total_score=same_player_array[0].total_score;
+            }
+         });
+                  
+    
+                if(same_player_array[0].rounds[same_player_array[0].rounds.length-1].shots.length==3){
+                    var playerObj = this.singleton.getObjectBasedOnValueFunc(this.scoreArray, "username", this.currentPlayerName);
+                    var userIndex = this.singleton.selectGameObj.user_id.indexOf(playerObj.user_id);
+    
+                   console.log(this.gameArray[this.gameArray.length-1].rounds.length,"final round length",this.singleton.selectGameObj.game_rounds)
+                    if(userIndex+1==this.singleton.selectGameObj.user_id.length){
+                        console.log()
+                        if(this.singleton.selectGameObj.game_rounds==this.gameArray[this.gameArray.length-1].rounds.length-1){
+                            console.log('stop... round over')
+                        }else{
+                            this.numberOfRound = Array.from(new Array(this.numberOfRound.length+1), (x, i) => i = i + 1);
+                      
+                        }
+                        //this.numberOfRound = Array.from(new Array(this.numberOfRound.length+1), (x, i) => i = i + 1);
+                        // this.numberOfRound = Array.from(new Array(same_player_array[0].rounds.length+1), (x, i) => i = i + 1);
+                    }
+                    this.isNew = true;
+                    
+                    console.log(this.currentPlayerName,this.scoreArray, this.singleton.selectGameObj.user_id,"last...");
+                }
+    
+               
+                   
+       
         //   console.log("TEMPARR1"+JSON.stringify(this.tempArray));
         //   var isLastShot = 0;
         //     if(this.activeShot == 0){
@@ -383,117 +551,6 @@ export class Game1playPage {
             //    }
 
 
-    let total_score=0;
-    var same_player_array = [];
-
-     /**Add rounds andscore of user in array for first time */
-    if(this.gameArray.length==0 || this.gameArray.filter(data=>data.player_name==this.currentPlayerName).length==0 || this.isNew){
-       
-        var playerObj = this.singleton.getObjectBasedOnValueFunc(this.scoreArray, "username", this.currentPlayerName);
-        var userIndex = this.singleton.selectGameObj.user_id.indexOf(playerObj.user_id);
-
-        if(this.gameArray.length>0){
-            console.log("In"+userIndex);
-            this.currentPlayerName = (userIndex+1)==this.singleton.selectGameObj.user_id.length ? this.singleton.selectGameObj.score_array[0].username : this.singleton.selectGameObj.score_array[userIndex+1].username;
-            this.currentRound = Number(this.currentRound)+1;
-
-            document.getElementById('shotOneScore').textContent =null;
-            document.getElementById('shotTwoScore').textContent =null;
-            document.getElementById('shotThreeScore').textContent = null;
-
-           
-        }
-    
-
-        var playerObj = this.singleton.getObjectBasedOnValueFunc(this.scoreArray, "username", this.currentPlayerName);
-        this.gameArray.push({
-            'user_id' : playerObj.user_id,
-            'player_name':this.currentPlayerName,
-            'rounds':[{'shots' :[selectedScore], 'round_total':selectedScore}],
-            'total_score':selectedScore
-        });
-
-        same_player_array = this.gameArray.filter(data=>data.player_name==this.currentPlayerName);
-      this.isNew = false;
-
-        //total_score=selectedScore;
-        this.commonParameterUpdate(same_player_array[0])
-    } else {
-        
-        /**Add rounds score of user in array after first time */
-       
-        same_player_array = this.gameArray.filter(data=>data.player_name==this.currentPlayerName); // to check if points is scoed by current user
-            
-        if(same_player_array[0].rounds.length < this.singleton.selectGameObj.game_rounds) {  // to check if game does not exceeds the round selected
-           
-            
-            /**add array of next round when  shots are added in a round */
-            if(same_player_array[0].rounds[same_player_array[0].rounds.length-1].shots.length>2){
-                same_player_array[0].rounds.push({'shots' :[selectedScore], 'round_total':selectedScore});
-            }else{
-                same_player_array[0].rounds[same_player_array[0].rounds.length-1].shots.push(selectedScore);
-            }
-          
-           /**Find total score of rounds */
-            let subTotal = 0;
-            same_player_array[0].rounds[same_player_array[0].rounds.length-1].shots.map(m=>{
-               subTotal=Number(m) + subTotal;
-            })
-            same_player_array[0].rounds[same_player_array[0].rounds.length-1].round_total = subTotal;
-               
-            /**Find total score of player */
-            same_player_array[0].rounds.map(m=>{
-                 
-                  total_score=Number(m.round_total)+total_score;
-               })
-            same_player_array[0].total_score=total_score;
-           
-        }
-      
-        /** Add same_player_array to the final gameArray*/
-        this.gameArray.map(m=>{
-            if(m.player_name==this.currentPlayerName){
-                m=same_player_array[0];
-              this.commonParameterUpdate(same_player_array[0]);
-            }
-        });
-
-    }
-
-   
-     console.log(JSON.stringify(same_player_array[0]));
-     this.scoreArray.map(m=>{
-        if(m.username==this.currentPlayerName){
-            m.total_score=same_player_array[0].total_score;
-        }
-     });
-     //console.log(JSON.stringify(this.scoreArray));
-               // push username and total score object in score array
-              
-
-            if(same_player_array[0].rounds[same_player_array[0].rounds.length-1].shots.length==3){
-                var playerObj = this.singleton.getObjectBasedOnValueFunc(this.scoreArray, "username", this.currentPlayerName);
-                var userIndex = this.singleton.selectGameObj.user_id.indexOf(playerObj.user_id);
-
-                if(userIndex+1==this.singleton.selectGameObj.user_id.length){
-                    this.numberOfRound = Array.from(new Array(same_player_array[0].rounds.length+1), (x, i) => i = i + 1);
-                }
-                this.isNew = true;
-                
-                console.log(this.currentPlayerName,this.scoreArray, this.singleton.selectGameObj.user_id,"last...");
-            }
-
-            // if(same_player_array[0].rounds[same_player_array[0].rounds.length-1].shots.length==3){
-            //     var playerObj = this.singleton.getObjectBasedOnValueFunc(this.scoreArray, "username", this.currentPlayerName);
-            //     var userIndex = this.singleton.selectGameObj.user_id.indexOf(playerObj.user_id);
-
-            //     this.currentPlayerName = (userIndex+1)==this.singleton.selectGameObj.user_id.length ? this.singleton.selectGameObj.score_array[0].username : this.singleton.selectGameObj.score_array[userIndex+1].username;
-            //     document.getElementById('currentPlayerScore').textContent = '0';
-            //     document.getElementById('shotOneScore').textContent =null;
-            //     document.getElementById('shotTwoScore').textContent =null;
-            //     document.getElementById('shotThreeScore').textContent = null;
-            // }
-               
    
 }
      
@@ -535,15 +592,12 @@ export class Game1playPage {
 //    }
 
    commonParameterUpdate(data){
-
-    
-
     console.log(data,"show data on screen",data.rounds.length)
     document.getElementById('currentPlayerScore').textContent = data.rounds[data.rounds.length-1].round_total;
     document.getElementById('shotOneScore').textContent =data.rounds[data.rounds.length-1].shots[0];
     document.getElementById('shotTwoScore').textContent =data.rounds[data.rounds.length-1].shots[1];
     document.getElementById('shotThreeScore').textContent = data.rounds[data.rounds.length-1].shots[2];
-
+    console.log(this.gameArray,"complete game Arrray")
     // this.tempArray = {
     //     "gameId": this.singleton.selectGameObj.game_id,
     //     "roundId": this.singleton.selectGameObj.round_id,
