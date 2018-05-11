@@ -145,7 +145,7 @@ export class MyApp {
                         this.nav.pop({});
                       } else {
                         this.backButtonPressedOnceToExit = true;
-                        this.singleton.commonToast('Click back button twice to exit.');  
+                        ('Click back button twice to exit.');  
                         setTimeout(() => {
                               this.backButtonPressedOnceToExit = false;
                         }, 2000)

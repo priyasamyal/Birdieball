@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController, AlertController,IonicPage } from 'ionic-angular';
+import { NavController, AlertController,IonicPage ,NavParams} from 'ionic-angular';
 import { Http } from '@angular/http';
 import { FormBuilder, Validators} from '@angular/forms';
 
@@ -26,7 +26,7 @@ export class LoginPage {
   password;
   rememberMe: boolean = false;
      
-  constructor(public common:CommonProvider,public alertCtrl: AlertController, public http: Http, public singleton: SingletonService, public navCtrl: NavController, public formBuilder: FormBuilder) {
+  constructor(public navparams:NavParams, public common:CommonProvider,public alertCtrl: AlertController, public http: Http, public singleton: SingletonService, public navCtrl: NavController, public formBuilder: FormBuilder) {
        this.username = '';
        this.password = '';
        this.http = http;
@@ -40,6 +40,8 @@ export class LoginPage {
          this.isChecked=true;
         this.username=window.localStorage.getItem('tempUserName');
        }
+
+       
   }
  
        /**
@@ -158,7 +160,7 @@ export class LoginPage {
      */
      offlineModeFunc() {
           this.singleton.logoutFunc();
-          this.navCtrl.push(this.selectGamePage);
+          this.navCtrl.push(this.selectGamePage,{'isoffline':true});
      }
 
     

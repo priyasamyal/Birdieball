@@ -48,6 +48,7 @@ export class Game1playPage {
             console.log(val,"value",this.previousRound)
             this.isdisabled=false;
           }else if(val==this.previousRound){
+              
             this.isdisabled=true;
           }
           var playerObj = this.singleton.getObjectBasedOnValueFunc(this.scoreArray, "username", this.currentPlayerName);
